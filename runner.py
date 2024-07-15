@@ -1,4 +1,4 @@
-class Student:
+class Runner:
     def __init__(self, name):
         self.name = name
         self.distance = 0
