@@ -1,7 +1,9 @@
 from runner_and_tournament import Runner, Tournament
-from unittest import TestCase
+from unittest import TestCase, skipIf
+
 
 class TournamentTest(TestCase):
+    is_frozen = True
     
     @classmethod
     def setUpClass(cls):
@@ -19,6 +21,7 @@ class TournamentTest(TestCase):
         del cls.andrew
         del cls.nick
 
+    @skipIf(is_frozen, "Тесты в этом кейсе заморожены")
     def test_first(self):
         tournament = Tournament(90, self.usain, self.nick)
         result = tournament.start()
@@ -26,6 +29,7 @@ class TournamentTest(TestCase):
         assert result[1] == self.usain, f"first place is {self.usain.name}, not {result[1].name}"
         assert result[2] == self.nick, f"second place is {self.nick.name}, not {result[2].name}"
 
+    @skipIf(is_frozen, "Тесты в этом кейсе заморожены")
     def test_second(self):
         tournament = Tournament(90, self.nick, self.andrew)
         result = tournament.start()
@@ -33,6 +37,7 @@ class TournamentTest(TestCase):
         assert result[1] == self.andrew, f"first place is {self.andrew.name}, not {result[1].name}"
         assert result[2] == self.nick, f"second place is {self.nick.name}, not {result[2].name}"
 
+    @skipIf(is_frozen, "Тесты в этом кейсе заморожены")
     def test_third(self):
         tournament = Tournament(90, self.nick, self.andrew, self.usain)
         result = tournament.start()
