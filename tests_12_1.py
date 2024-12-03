@@ -5,7 +5,7 @@ from runner import Runner
 
 class RunnerTest(TestCase):
     is_frozen = False
-    
+
     @skipIf(is_frozen, "Тесты в этом кейсе заморожены")
     def test_walk(self):
         runner = Runner("John")
